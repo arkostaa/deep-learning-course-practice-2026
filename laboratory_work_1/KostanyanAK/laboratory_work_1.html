@@ -7812,7 +7812,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -7831,8 +7831,6 @@ a.anchor-link {
 <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">64</span>
 <span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">20</span>
 
-<span class="c1"># Для небольших матриц многочисленные потоки BLAS часто замедляют расчёт.</span>
-<span class="c1"># Ограничение действует на матричные операции NumPy, а не на формулы сети.</span>
 <span class="n">blas_limit</span> <span class="o">=</span> <span class="n">threadpool_limits</span><span class="p">(</span><span class="n">limits</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">user_api</span><span class="o">=</span><span class="s2">"blas"</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -7856,7 +7854,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">DATA_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"data"</span><span class="p">)</span>
@@ -7868,7 +7866,6 @@ a.anchor-link {
     <span class="n">path</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">/</span> <span class="n">filename</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"Загрузка:"</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="c1"># Временный файл не позволяет принять оборванную загрузку за готовую.</span>
         <span class="n">temporary_path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">".part"</span><span class="p">)</span>
         <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">BASE_URL</span> <span class="o">+</span> <span class="n">filename</span><span class="p">,</span> <span class="n">temporary_path</span><span class="p">)</span>
         <span class="n">temporary_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -8059,7 +8056,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">check_gradients</span><span class="p">():</span>
@@ -8086,7 +8083,7 @@ a.anchor-link {
         <span class="n">difference</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">numerical</span> <span class="o">-</span> <span class="n">analytical</span><span class="p">[</span><span class="n">name</span><span class="p">]))</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: максимальное абсолютное расхождение = </span><span class="si">{</span><span class="n">difference</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">analytical</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="n">numerical</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-7</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"Проверка градиентов пройдена."</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Проверка градиентов пройдена"</span><span class="p">)</span>
 
 
 <span class="n">check_gradients</span><span class="p">()</span>
@@ -8218,7 +8215,7 @@ b2: максимальное абсолютное расхождение = 6.85e
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="6.-%D0%9E%D1%86%D0%B5%D0%BD%D0%BA%D0%B0-%D0%BD%D0%B0-%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B9-%D0%B2%D1%8B%D0%B1%D0%BE%D1%80%D0%BA%D0%B5">6. Оценка на тестовой выборке<a class="anchor-link" href="#6.-%D0%9E%D1%86%D0%B5%D0%BD%D0%BA%D0%B0-%D0%BD%D0%B0-%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B9-%D0%B2%D1%8B%D0%B1%D0%BE%D1%80%D0%BA%D0%B5">¶</a></h2><p>Выводим точность, ошибку и кросс-энтропию.</p>
+<h2 id="6.-%D0%9E%D1%86%D0%B5%D0%BD%D0%BA%D0%B0-%D0%BD%D0%B0-%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B9-%D0%B2%D1%8B%D0%B1%D0%BE%D1%80%D0%BA%D0%B5">6. Оценка на тестовой выборке<a class="anchor-link" href="#6.-%D0%9E%D1%86%D0%B5%D0%BD%D0%BA%D0%B0-%D0%BD%D0%B0-%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B9-%D0%B2%D1%8B%D0%B1%D0%BE%D1%80%D0%BA%D0%B5">¶</a></h2><p>Выводим точность, ошибку и кросс-энтропию</p>
 </div>
 </div>
 </div>
